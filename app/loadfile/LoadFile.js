@@ -1,12 +1,12 @@
-'use client';
+'use client'
  
-import React from 'react';
+import React from 'react'
 import styles from '../styles.module.css'
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'
 
 export default function FileLoader() {
 
-  const router = useRouter();
+  const router = useRouter()
 
   const handleRegisterClick = () => {
     router.push('/mainscreen')
@@ -29,5 +29,5 @@ export default function FileLoader() {
             </button>
         </div>
       </div>
-  );
+  )
 }

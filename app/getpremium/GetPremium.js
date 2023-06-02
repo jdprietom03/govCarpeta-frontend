@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import styles from '../styles.module.css';
+import React, { useState } from 'react'
+import styles from '../styles.module.css'
 
 export default function GetPremium() {
-  const [cardNumber, setCardNumber] = useState('');
-  const [expirationDate, setExpirationDate] = useState('');
-  const [cvv, setCvv] = useState('');
-  const [error, setError] = useState('');
+  const [cardNumber, setCardNumber] = useState('')
+  const [expirationDate, setExpirationDate] = useState('')
+  const [cvv, setCvv] = useState('')
+  const [error, setError] = useState('')
 
   const handleFormSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // Validar los datos del formulario (en este ejemplo, se comprueba si se ha ingresado algún número de tarjeta)
     if (cardNumber.trim() === '') {
-      setError('Por favor, ingresa un número de tarjeta válido');
-      return;
+      setError('Por favor, ingresa un número de tarjeta válido')
+      return
     }
 
     // Procesar la suscripción Premium aquí (enviar datos a una API, etc.)
 
     // Limpiar los campos del formulario después de enviar
-    setCardNumber('');
-    setExpirationDate('');
-    setCvv('');
-    setError('');
+    setCardNumber('')
+    setExpirationDate('')
+    setCvv('')
+    setError('')
 
     // Mostrar mensaje de éxito o redirigir a una página de confirmación
-    alert('¡Te has suscrito a Premium exitosamente!');
-  };
+    alert('¡Te has suscrito a Premium exitosamente!')
+  }
 
   return (
     <div className={styles.container}>
@@ -66,5 +66,5 @@ export default function GetPremium() {
         </button>
       </form>
     </div>
-  );
+  )
 }

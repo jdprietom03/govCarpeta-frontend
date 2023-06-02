@@ -1,28 +1,45 @@
-'use client';
-import React, { useState } from 'react';
-import styles from '../styles.module.css';
-import Link from 'next/link';
-import { login } from './Auth';
+'use client'
+import React, { useEffect, useState } from 'react'
+import styles from '../styles.module.css'
+import Link from 'next/link'
+import { login } from './Auth'
+import { loginUser } from '../api/api'
+import { getCookie, setCookie } from '../api/cookie'
 
 export default function HomePage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [dni, setDNI] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const user = getCookie("user")
+
+    if (user) {
+      window.location.href = '/mainscreen'
+    } else {
+      setLoading(false)
+    }
+  }, [loading])
 
   const handleLogin = (e) => {
-    e.preventDefault();
-    const user = login(email, password);
-    if (user) {
-      setError('');
-      // Redirigir al usuario a la página "/mainscreen" si se autentica correctamente
-      // Puedes usar el router de Next.js para hacer la redirección
-      // router.push('/mainscreen');
-      console.log('Usuario autenticado:', user);
-      window.location.href = '/mainscreen';
+    e.preventDefault()
+    const user = {dni, password}
+    if (user.dni !== '' && user.password !== '') {
+      console.log(user)
+      setError('')
+      loginUser(user).then(data => {
+        setCookie("user", JSON.stringify(data), 36000)
+      })
+      window.location.href = '/mainscreen'
     } else {
-      setError('Credenciales inválidas');
+      setError('Credenciales inválidas')
     }
-  };
+  }
+
+  if (loading) {
+    return <></>
+  }
 
   return (
     <div className={styles.container}>
@@ -32,9 +49,9 @@ export default function HomePage() {
           <input
             type="text"
             className={styles.formInput}
-            placeholder="Correo electrónico"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Documento de identidad"
+            value={dni}
+            onChange={(e) => setDNI(e.target.value)}
           />
           <input
             type="password"
@@ -55,5 +72,5 @@ export default function HomePage() {
         </Link>
       </div>
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 export const users = [
     {
@@ -12,10 +12,10 @@ export const users = [
       contrasena: 'password1',
     },
     // Agrega más usuarios mockeados según sea necesario
-  ];
+  ]
   
 export function login(email, password) {
-    const user = users.find((user) => user.correo === email && user.contrasena === password);
-    return user;
+    const user = users.find((user) => user.correo === email && user.contrasena === password)
+    return user
   }
   

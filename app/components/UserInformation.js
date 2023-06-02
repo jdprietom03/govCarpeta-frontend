@@ -1,34 +1,34 @@
-import React, { useState, Suspense } from 'react';
-import styles from '../styles.module.css';
-import { useRouter } from 'next/navigation';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload, faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, Suspense } from 'react'
+import styles from '../styles.module.css'
+import { useRouter } from 'next/navigation'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUpload, faTrash, faEye } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function UserInformation() {
   const user = {
     userName: 'Benito Antonio Martínez',
     photo: 'https://th.bing.com/th/id/OIP.Rn_8_xdrkIx8mXR8diMCGQAAAA?pid=ImgDet&rs=1',
-  };
+  }
 
-  const router = useRouter();
+  const router = useRouter()
 
   const handleLoaderClick = () => {
-    router.push('/loadfile');
-  };
+    router.push('/loadfile')
+  }
 
   const handlePremiumClick = () => {
-    router.push('/getpremium');
-  };
+    router.push('/getpremium')
+  }
 
   const handleUpClick = () => {
     // Aquí puedes enviar los documentos cargados a una base de datos o hacer cualquier otra acción necesaria
-    console.log('Documentos cargados:', mockedFiles);
-  };
+    console.log('Documentos cargados:', mockedFiles)
+  }
 
   const handleSolisClick = () => {
-    router.push('/solicitudes');
-  };
+    router.push('/solicitudes')
+  }
 
 const [mockedFiles, setMockedFiles] = useState([
     {
@@ -66,11 +66,11 @@ const [mockedFiles, setMockedFiles] = useState([
       type: 'application/vnd.ms-excel',
       uploadDate: new Date().toLocaleString(),
     },
-  ]);
+  ])
 
   const handleDeleteFile = (id) => {
-    setMockedFiles((prevMockedFiles) => prevMockedFiles.filter((file) => file.id !== id));
-  };
+    setMockedFiles((prevMockedFiles) => prevMockedFiles.filter((file) => file.id !== id))
+  }
 
   return (
     <div className={styles.container}>
@@ -136,6 +136,6 @@ const [mockedFiles, setMockedFiles] = useState([
         </div>
       </div>
     </div>
-  );
+  )
 }
 

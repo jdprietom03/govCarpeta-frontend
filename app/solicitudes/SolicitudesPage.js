@@ -1,20 +1,20 @@
-'use client';
-import React from "react";
-import styles from '../styles.module.css';
-import { useRouter } from 'next/navigation';
+'use client'
+import React from "react"
+import styles from '../styles.module.css'
+import { useRouter } from 'next/navigation'
 
 export default function SolicitudesTable() {
   const tableData = [
     { id: 1, entidad: 'Entidad 1', estado: 'Activo', fechaActualizacion: '2022-05-10' },
     { id: 2, entidad: 'Entidad 2', estado: 'Inactivo', fechaActualizacion: '2022-06-15' },
     { id: 3, entidad: 'Entidad 3', estado: 'Pendiente', fechaActualizacion: '2022-07-20' },
-  ];
+  ]
 
-  const router = useRouter();
+  const router = useRouter()
 
   const handleMainClick = () => {
-    router.push('/mainscreen');
-  };
+    router.push('/mainscreen')
+  }
 
   return (
     <div className={styles.tableContainer}>
@@ -45,5 +45,5 @@ export default function SolicitudesTable() {
         </tbody>
       </table>
     </div>
-  );
+  )
 }
